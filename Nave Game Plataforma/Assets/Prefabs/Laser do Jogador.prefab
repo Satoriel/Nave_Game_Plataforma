@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 883228227222154220}
   - component: {fileID: 1935082958442728273}
-  - component: {fileID: 4538640319788991146}
-  - component: {fileID: -6675971061594486502}
   - component: {fileID: -3173170674708423352}
+  - component: {fileID: -4393648747239442871}
+  - component: {fileID: 5347103455328399279}
   m_Layer: 0
   m_Name: Laser do Jogador
   m_TagString: Untagged
@@ -87,35 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4538640319788991146
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2599627569368355699}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.265625
---- !u!114 &-6675971061594486502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2599627569368355699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a1758e19e0b4f4db766e75915632b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserVel: 15
 --- !u!114 &-3173170674708423352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +100,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempoDeVidaDoLaser: 5
+--- !u!114 &-4393648747239442871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599627569368355699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e55c3dc174b3949865f179434091ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danoParaDar: 1
+  laserVel: 15
+--- !u!70 &5347103455328399279
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599627569368355699}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.25000006, y: 0.5312501}
+  m_Direction: 0

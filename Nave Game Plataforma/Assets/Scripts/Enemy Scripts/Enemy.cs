@@ -20,10 +20,17 @@ public class Enemy : MonoBehaviour
 
     public bool inimigoAtirador;
 
+    public int vidaAtualInimiga;
+    public int vidaMaximaInimiga;
+
+    public int danoFisico;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        vidaAtualInimiga = vidaMaximaInimiga;
     }
 
     // Update is called once per frame
@@ -46,6 +53,16 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.up * enemyVel * Time.deltaTime);
     }
 
+    public void MachucarInimigo(int danoParaReceber)
+    {
+        vidaAtualInimiga -= danoParaReceber;
+
+        if(vidaAtualInimiga <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private void AtirarLaserInimigo()
     {
         tempoAtualDosLasers -= Time.deltaTime;
@@ -65,5 +82,13 @@ public class Enemy : MonoBehaviour
             Instantiate(laserInimigo, canhaoDuplo2.position, Quaternion.Euler(0f,0f, 70f));
             tempoAtualDosLasers = TempoMaxDosLasers;
         }
+    }
+
+     void OnCollisionEnter2D (Collision2D other)
+    {
+      if(other.gameObject.CompareTag("Player"))
+      {
+        other.gameObject.GetComponent<PlayerVida>().MachucarJogador(danoFisico);
+      }
     }
 }

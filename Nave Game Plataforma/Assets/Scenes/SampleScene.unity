@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220981656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.46, y: 0.92, z: 0}
+  m_LocalPosition: {x: 0.46, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,6 +279,9 @@ MonoBehaviour:
   TempoMaxDosLasers: 1
   laserInimigo: {fileID: 5850703206637737716, guid: d0db2c0de0aa23d46973d5f94fd1f5ee, type: 3}
   inimigoAtirador: 0
+  vidaAtualInimiga: 0
+  vidaMaximaInimiga: 2
+  danoFisico: 1
 --- !u!58 &698605320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -398,6 +401,7 @@ GameObject:
   - component: {fileID: 909361334}
   - component: {fileID: 909361333}
   - component: {fileID: 909361332}
+  - component: {fileID: 909361337}
   m_Layer: 0
   m_Name: Nave do Jogador
   m_TagString: Player
@@ -529,6 +533,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &909361337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909361331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7f67681b9e615408bf3df17b235c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: 10
+  vidaAtual: 0
+  escudo: 0
 --- !u!1 &910440061
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +589,9 @@ MonoBehaviour:
   TempoMaxDosLasers: 0
   laserInimigo: {fileID: 0}
   inimigoAtirador: 0
+  vidaAtualInimiga: 0
+  vidaMaximaInimiga: 2
+  danoFisico: 3
 --- !u!58 &910440063
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -583,9 +605,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.009058713, y: -0.0000000010798826}
   serializedVersion: 2
-  m_Radius: 0.6875002
+  m_Radius: 0.7690287
 --- !u!50 &910440064
 Rigidbody2D:
   serializedVersion: 4
@@ -729,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284605008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48, y: 0.91, z: 0}
+  m_LocalPosition: {x: -0.48, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -830,7 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb6112a3dc3b454189cb7ef0833f343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyVel: 10
+  enemyVel: 0
   canhaoDeDisparoInimigo: {fileID: 1813847015}
   canhaoDuplo: {fileID: 0}
   canhaoDuplo2: {fileID: 0}
@@ -839,6 +861,9 @@ MonoBehaviour:
   TempoMaxDosLasers: 1
   laserInimigo: {fileID: 3187758642605412079, guid: efe479e7b00cc5849b5f2c720f462205, type: 3}
   inimigoAtirador: 1
+  vidaAtualInimiga: 0
+  vidaMaximaInimiga: 2
+  danoFisico: 1
 --- !u!58 &1534174307
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -852,9 +877,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000000011878709, y: -0.09964584}
   serializedVersion: 2
-  m_Radius: 0.98437524
+  m_Radius: 1.0840211
 --- !u!50 &1534174308
 Rigidbody2D:
   serializedVersion: 4
@@ -968,7 +993,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813847014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.89, z: 0}
+  m_LocalPosition: {x: 0, y: 1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
