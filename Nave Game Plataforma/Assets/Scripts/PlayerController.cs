@@ -10,18 +10,33 @@ public class PlayerController : MonoBehaviour
     public Transform canhaoDeDisparoUnico;
     public bool laserDuplo;
     private Vector2 controle;
+    public float tempoAtualDosLasersDuplos;
+    public float tempoMaximoDosLasersDuplos;
+    public Transform canhaoDuploJogador;
+    public Transform canhaoDuploJogador2;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-      laserDuplo = false;  
+      laserDuplo = false; 
+      tempoAtualDosLasersDuplos = tempoMaximoDosLasersDuplos; 
     }
 
     // Update is called once per frame
     void Update()
     {
       Movimentar();
-      AtirarLaser();  
+      AtirarLaser();
+      if(laserDuplo == true)
+      {
+        tempoAtualDosLasersDuplos -= Time.deltaTime;
+
+        if(tempoAtualDosLasersDuplos <= 0)
+        {
+          DesativarTiroDuplo();
+        }
+      }  
     }
     
     private void Movimentar()
@@ -38,5 +53,17 @@ public class PlayerController : MonoBehaviour
           Instantiate(laser, canhaoDeDisparoUnico.position, canhaoDeDisparoUnico.rotation);
         }
       }
+      else
+      {
+        Instantiate(laser, canhaoDuploJogador.position, canhaoDuploJogador.rotation);
+        Instantiate(laser, canhaoDuploJogador2.position, canhaoDuploJogador2.rotation);
+      }
     }
+    private void DesativarTiroDuplo()
+    { 
+      laserDuplo = false;
+      tempoAtualDosLasersDuplos = tempoMaximoDosLasersDuplos;
+    }
+
+  
 }

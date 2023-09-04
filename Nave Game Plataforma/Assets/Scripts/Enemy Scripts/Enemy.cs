@@ -6,6 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public float enemyVel;
 
+    public GameObject escudoInimigo;
+
+    public bool temEscudo;
+
+    public int vidaMaxEscInimigo;
+    public int vidaAtualEscInimigo;
+
     public Transform canhaoDeDisparoInimigo;
     public Transform canhaoDuplo;
     public Transform canhaoDuplo2;
@@ -25,12 +32,18 @@ public class Enemy : MonoBehaviour
 
     public int danoFisico;
 
+    public int pontosParaDar;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
         vidaAtualInimiga = vidaMaximaInimiga;
+        if(temEscudo == true)
+        {
+            vidaAtualEscInimigo = vidaMaxEscInimigo;
+        }
     }
 
     // Update is called once per frame
@@ -55,12 +68,28 @@ public class Enemy : MonoBehaviour
 
     public void MachucarInimigo(int danoParaReceber)
     {
-        vidaAtualInimiga -= danoParaReceber;
+        if(temEscudo == false)
+        {
+             vidaAtualInimiga -= danoParaReceber;
 
         if(vidaAtualInimiga <= 0)
         {
+            GameManager.instance.AumentarPontuacao(pontosParaDar);
             Destroy(this.gameObject);
         }
+
+        }
+        else
+        {
+            vidaAtualEscInimigo -= danoParaReceber;
+
+            if(vidaAtualEscInimigo <= 0)
+            {
+                escudoInimigo.SetActive(false);
+                temEscudo = false;
+            }
+        }
+       
     }
 
     private void AtirarLaserInimigo()
@@ -90,5 +119,11 @@ public class Enemy : MonoBehaviour
       {
         other.gameObject.GetComponent<PlayerVida>().MachucarJogador(danoFisico);
       }
+    }
+    public void AtivarEscudoInimigo()
+    {
+        vidaAtualEscInimigo = vidaMaxEscInimigo;
+        escudoInimigo.SetActive(true);
+        temEscudo = true;
     }
 }
