@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     public bool temEscudo;
 
+    public GameObject itemPraDroppar;
+
     public int vidaMaxEscInimigo;
     public int vidaAtualEscInimigo;
 
@@ -24,6 +26,8 @@ public class Enemy : MonoBehaviour
     public float TempoMaxDosLasers;
 
     public GameObject laserInimigo;
+
+    public int chanceDeDrop;
 
     public bool inimigoAtirador;
 
@@ -75,6 +79,14 @@ public class Enemy : MonoBehaviour
         if(vidaAtualInimiga <= 0)
         {
             GameManager.instance.AumentarPontuacao(pontosParaDar);
+
+
+            int numeroAleatorio = Random.Range(0, 100);
+            if(numeroAleatorio <= chanceDeDrop)
+            {
+                Instantiate(itemPraDroppar, transform.position, Quaternion.Euler(0f, 0f, 0f));
+            }
+
             Destroy(this.gameObject);
         }
 
@@ -113,7 +125,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-     void OnCollisionEnter2D (Collision2D other)
+     void OnTriggerEnter2D (Collider2D other)
     {
       if(other.gameObject.CompareTag("Player"))
       {
@@ -126,4 +138,5 @@ public class Enemy : MonoBehaviour
         escudoInimigo.SetActive(true);
         temEscudo = true;
     }
+    
 }

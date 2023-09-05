@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject superTiro;
     public Rigidbody2D oRigidbody2d;
     public float velocidade;
     public GameObject laser;
@@ -14,13 +15,18 @@ public class PlayerController : MonoBehaviour
     public float tempoMaximoDosLasersDuplos;
     public Transform canhaoDuploJogador;
     public Transform canhaoDuploJogador2;
+    public bool temSuperTiro;
+    public float tempoAtualDoSuperTiro;
+    public float tempoMaxDoSuperTiro;
     
 
     // Start is called before the first frame update
     void Start()
     {
       laserDuplo = false; 
+      temSuperTiro = false;
       tempoAtualDosLasersDuplos = tempoMaximoDosLasersDuplos; 
+      tempoAtualDoSuperTiro = tempoMaxDoSuperTiro;
     }
 
     // Update is called once per frame
@@ -36,7 +42,17 @@ public class PlayerController : MonoBehaviour
         {
           DesativarTiroDuplo();
         }
-      }  
+      }
+       if(superTiro == true)
+      {
+        
+        AtivarSuperTiro();
+        tempoAtualDoSuperTiro -= Time.deltaTime;
+      }
+      if(tempoAtualDoSuperTiro <= 0)
+      {
+        DesativarSuperTiro();
+      } 
     }
     
     private void Movimentar()
@@ -48,15 +64,28 @@ public class PlayerController : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.Space))
       {
-        if(laserDuplo == false)
+        if(laserDuplo == false && temSuperTiro == false)
         {
           Instantiate(laser, canhaoDeDisparoUnico.position, canhaoDeDisparoUnico.rotation);
         }
-      }
-      else
+      
+      if(laserDuplo == true)
       {
+        DesativarSuperTiro();
         Instantiate(laser, canhaoDuploJogador.position, canhaoDuploJogador.rotation);
         Instantiate(laser, canhaoDuploJogador2.position, canhaoDuploJogador2.rotation);
+      }
+      }
+    }
+    private void AtivarSuperTiro()
+    {
+      if(Input.GetKeyDown(KeyCode.Space))
+      {
+        if(temSuperTiro == true)
+        {
+          DesativarTiroDuplo();
+          Instantiate(superTiro, canhaoDeDisparoUnico.position, canhaoDeDisparoUnico.rotation);
+        }
       }
     }
     private void DesativarTiroDuplo()
@@ -64,6 +93,10 @@ public class PlayerController : MonoBehaviour
       laserDuplo = false;
       tempoAtualDosLasersDuplos = tempoMaximoDosLasersDuplos;
     }
-
+    private void DesativarSuperTiro()
+    {
+      temSuperTiro = false;
+      tempoAtualDoSuperTiro = tempoMaxDoSuperTiro;
+    }
   
 }

@@ -12,7 +12,11 @@ public class PlayerVida : MonoBehaviour
     public int vidaMaximaDoEscudo;
     public int vidaAtualDoEscudo;
 
+    public float tempoAtualDoEscudo;
+    public float tempoMaxDoEscudo;
+
     public GameObject escudoDoJogador;
+    
 
     public bool escudo;
     // Start is called before the first frame update
@@ -24,12 +28,16 @@ public class PlayerVida : MonoBehaviour
         
         escudoDoJogador.SetActive(false);
         escudo = false;
+        tempoAtualDoEscudo = tempoMaxDoEscudo;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(escudo == true)
+        {
+            tempoAtualDoEscudo -= Time.deltaTime;
+        }
     }
     public void MachucarJogador(int danoParaReceber)
     {
@@ -46,8 +54,14 @@ public class PlayerVida : MonoBehaviour
         else
         {
             vidaAtualDoEscudo -= danoParaReceber;
+            
 
             if(vidaAtualDoEscudo <= 0)
+            {
+                escudoDoJogador.SetActive(false);
+                escudo = false;
+            }
+            if(tempoAtualDoEscudo <= 0)
             {
                 escudoDoJogador.SetActive(false);
                 escudo = false;
@@ -60,4 +74,5 @@ public class PlayerVida : MonoBehaviour
         escudoDoJogador.SetActive(true);
         escudo = true;
     }
+   
 }
