@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1658136102918269206}
   - component: {fileID: 1658136102918269207}
   - component: {fileID: 1658136102918269208}
+  - component: {fileID: -8060386640678463315}
   m_Layer: 0
   m_Name: Inimigo verde
   m_TagString: Inimigo
@@ -157,6 +158,19 @@ MonoBehaviour:
   vidaMaximaInimiga: 2
   danoFisico: 1
   pontosParaDar: 15
+--- !u!114 &-8060386640678463315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658136102918269209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a2dd7a078365e49b9942509c69351e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempoDeVidaDoLaser: 100
 --- !u!1 &1658136103514382215
 GameObject:
   m_ObjectHideFlags: 0

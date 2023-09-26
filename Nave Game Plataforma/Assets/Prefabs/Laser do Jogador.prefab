@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a2dd7a078365e49b9942509c69351e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempoDeVidaDoLaser: 5
+  tempoDeVidaDoLaser: 1
 --- !u!114 &-4393648747239442871
 MonoBehaviour:
   m_ObjectHideFlags: 0
